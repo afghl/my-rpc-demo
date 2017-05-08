@@ -13,7 +13,7 @@ import java.util.concurrent.Executors;
 public class RpcExporter {
     private static Executor pool = Executors.newFixedThreadPool(4);
 
-    private static void exporter(String hostName, int port) throws Exception {
+    public static void exporter(String hostName, int port) throws Exception {
         ServerSocket server = new ServerSocket();
         server.bind(new InetSocketAddress(hostName, port));
         try {
