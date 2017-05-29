@@ -36,17 +36,16 @@ public class RpcImporter<S> {
     public static void main(String[] args) {
         int port = 9912;
 
-        new Thread(() -> {
-           try {
-               RpcExporter.exporter("localhost", port);
-           } catch (Exception e) {
-               e.printStackTrace();
-           }
-        }).start();
-
         RpcImporter<EchoService> importer = new RpcImporter<>();
         EchoService echo = importer.importer(EchoServiceImpl.class, new InetSocketAddress("localhost", port));
 
         System.out.printf(echo.echo("are you ok?"));
+        System.out.println(echo.echo("test more"));
+
+
+        // test calc
+
+        Integer result = echo.calc(1, 2);
+        System.out.println(result);
     }
 }

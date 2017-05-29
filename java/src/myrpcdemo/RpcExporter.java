@@ -62,5 +62,17 @@ public class RpcExporter {
             }
         }
     }
+
+    public static void main(String[] args) {
+        int port = 9912;
+
+        new Thread(() -> {
+            try {
+                RpcExporter.exporter("localhost", port);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+        }).start();
+    }
 }
 
